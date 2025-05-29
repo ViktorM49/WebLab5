@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cozy Motel</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="../images/logo.png" alt="Логотип Cozy Motel">
+    </div>
+    <nav>
+    <ul>
+      <li><a href="index.html">Головна</a></li>
+      <li><a href="rooms.html">Номери</a></li>
+      <li><a href="services.html">Послуги</a></li>
+      <li><a href="reviews.html">Відгуки</a></li>
+      <li><a href="contacts.html">Контакти</a></li>
+    </ul>
+  </nav>
+  </header>
+
+  <main>
+   <form id="bookingForm" class="booking-form">
+  <label for="name">Ім’я</label>
+  <input type="text" id="name" name="name" required>
+
+  <label for="phone">Номер телефону</label>
+  <input type="tel" id="phone" name="phone" required>
+
+  <label for="email">Email</label>
+  <input type="email" id="email" name="email" required>
+
+  <label for="days">Дні бронювання: <span id="daysValue">1</span></label>
+  <input type="range" id="days" name="days" min="1" max="14" value="1" required>
+
+  <label>Тип номера</label>
+  <div class="room-type-buttons">
+    <input type="radio" id="single" name="room-type" value="Одномісний" required>
+    <label for="single">Одномісний</label>
+
+    <input type="radio" id="double" name="room-type" value="Двомісний">
+    <label for="double">Двомісний</label>
+
+    <input type="radio" id="double-plus" name="room-type" value="Двомісний +">
+    <label for="double-plus">Двомісний+</label>
+  </div>
+
+
+  <button type="submit">Забронювати</button>
+</form>
+  </main>
+<script>
+  const form = document.getElementById('bookingForm');
+  const daysSlider = document.getElementById('days');
+  const daysValue = document.getElementById('daysValue');
+
+  daysSlider.addEventListener('input', () => {
+    daysValue.textContent = daysSlider.value;
+  });
+
+  form.addEventListener('submit', function(event) {
+    if (form.checkValidity()) {
+      event.preventDefault();
+      alert("Успішно");
+       form.reset();
+      daysValue.textContent = daysSlider.value = 1;
+    }
+  });
+</script>
+</body>
+</html>
